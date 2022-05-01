@@ -275,13 +275,17 @@ puts ""
 # TODO!
 
 movies = Movie.all
+studios = Studio.all
+actors = Actor.all
 
-for movie in movies
-    title = movie["title"]
-    release = movie["year_released"]
-    rating =  movie["rated"]
-    studio = movie["studio_id"]
-    puts "#{title} #{release} #{rating} #{studio}"
+for studio in studios
+    for movie in movies.where({"studio_id" => studio["id"]})
+        title = movie["title"]
+        release = movie["year_released"]
+        rating =  movie["rated"]
+        studio_name = studio["name"]
+        puts "#{title} #{release} #{rating} #{studio_name}"
+    end
 end
 
 
@@ -296,9 +300,16 @@ puts ""
 
 roles = Role.all
 
-for role in roles
-    movie = role["movie_id"]
-    actor = role["actor_id"]
-    character = role["character_name"]
-    puts "#{movie} #{actor} #{character}"
+for movie in movies
+    for actor in actors
+        for role in roles.where({"actor_id" => actor["id"], "movie_id" => movie["id"]})
+            movie_name = movie["title"]
+            actor_name = actor["name"]
+            character = role["character_name"]
+            puts "#{movie_name} #{actor_name} #{character}"
+        end 
+    end
 end
+
+
+
