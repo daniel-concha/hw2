@@ -277,6 +277,7 @@ puts ""
 movies = Movie.all
 studios = Studio.all
 actors = Actor.all
+roles = Role.all
 
 for studio in studios
     for movie in movies.where({"studio_id" => studio["id"]})
@@ -297,8 +298,6 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
-
-roles = Role.all
 
 for movie in movies
     for actor in actors
