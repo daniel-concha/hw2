@@ -77,6 +77,7 @@ Studio.destroy_all
 # Generate models and tables, according to the domain model.
 # TODO!
 
+#see migrated dbs under app > db > migrate
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
